@@ -8,7 +8,7 @@ class Sections extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(20, 40, 20, 0),
+      padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -64,7 +64,7 @@ class CircularImageItem extends StatelessWidget {
             // Background color of the circle
           ),
           child: Center(
-            child: ClipOval(
+            child: ClipRRect(
               child: Image.asset(
                 imageUrl,
                 width: 30, // Adjust the image size as needed
