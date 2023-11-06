@@ -24,5 +24,7 @@ flutter:
     - assets/icons/cube.png
     - assets/icons/pastquestion.png
     - assets/icons/sample.png
+    - assets/icons/units.png
+    - assets/icons/course_works.png
 
 
