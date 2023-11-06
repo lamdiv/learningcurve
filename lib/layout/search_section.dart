@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../search_screen.dart';
 
 class Search extends StatelessWidget {
   const Search({
@@ -29,27 +30,37 @@ class Search extends StatelessWidget {
 class SearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity, // Set the width according to your needs
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Color.fromARGB(
-              255, 217, 217, 217), // Change the border color as desired
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => SearchScreen()),
+        );
+      },
+      child: Container(
+        width: double.infinity, // Set the width according to your needs
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: Color.fromARGB(
+                255, 217, 217, 217), // Change the border color as desired
+          ),
+          borderRadius: BorderRadius.circular(50),
+          // Adjust the border radius as needed
         ),
-        borderRadius: BorderRadius.circular(50),
-        // Adjust the border radius as needed
-      ),
-      child: SizedBox(
-        height: 45,
-        child: TextField(
-          decoration: InputDecoration(
-            hintText: "search for courses, videos....",
-            hintStyle: TextStyle(color: Color.fromARGB(255, 176, 176, 176)),
-            border: InputBorder.none, // Remove default input field border
-            prefixIcon: Icon(
-              Icons.search,
-              color: Color.fromARGB(
-                  255, 217, 217, 217), // Change the color of the search icon
+        child: SizedBox(
+          height: 45,
+          child: IgnorePointer(
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: "search for courses, videos....",
+                hintStyle: TextStyle(color: Color.fromARGB(255, 176, 176, 176)),
+                border: InputBorder.none, // Remove default input field border
+                prefixIcon: Icon(
+                  Icons.search,
+                  color: Color.fromARGB(255, 217, 217,
+                      217), // Change the color of the search icon
+                ),
+              ),
             ),
           ),
         ),

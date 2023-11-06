@@ -66,7 +66,7 @@ class MyCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15.0),
+        borderRadius: BorderRadius.circular(20.0),
       ),
       shadowColor: Color(0xFFD6D6D6).withOpacity(0.3),
       elevation: 3,
