@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:learning_curve_academy/grammar/conversion.dart';
 import 'package:learning_curve_academy/grammar/fill_blanks.dart';
 import 'package:learning_curve_academy/grammar/formulae.dart';
-import 'package:learning_curve_academy/lessons/match_the_following.dart';
-import 'package:learning_curve_academy/lessons/questions_answers.dart';
 
 const TOPICS = ['Formulae', 'Fill in the blanks', 'Conversion'];
 

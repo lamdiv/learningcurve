@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:learning_curve_academy/samples/sample_detail.dart';
-import 'package:learning_curve_academy/samples/samples_screen.dart';
 
 class EssayListScreen extends StatelessWidget {
   @override

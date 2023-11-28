@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:learning_curve_academy/layout/search_section.dart';
 
 class SearchScreen extends StatelessWidget {
   @override
