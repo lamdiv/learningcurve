@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learning_curve_academy/lessons/chapter_detail_screen.dart';
 
 class ChapterScreen extends StatelessWidget {
   @override
@@ -30,27 +31,34 @@ class ChapterScreen extends StatelessWidget {
               height: 18,
             ),
             Wrap(
-              crossAxisAlignment: WrapCrossAlignment.center,
-              spacing: 16, children: [
-              Text(
-                "A Tour To Central Zoo",
-                style: TextStyle(
-                    color: Color.fromARGB(255, 49, 49, 49),
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold),
-              ),
-              Text(
-                "(2 units)",
-                style: TextStyle(
-                    color: Color.fromARGB(255, 119, 119, 119),
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold),
-              ),
-            ]),
+                crossAxisAlignment: WrapCrossAlignment.center,
+                spacing: 16,
+                children: [
+                  Text(
+                    "A Tour To Central Zoo",
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 49, 49, 49),
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    "(2 units)",
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 119, 119, 119),
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ]),
             SizedBox(
               height: 18,
             ),
             GestureDetector(
+              onTap: () => {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                      builder: (context) => ChapterDetailScreen()),
+                )
+              },
               child: Card(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
@@ -101,7 +109,6 @@ class ChapterScreen extends StatelessWidget {
                             SizedBox(height: 8),
                             Row(
                               children: [
-                                
                                 Row(children: [
                                   Image.asset(
                                     'assets/icons/course_works.png',
@@ -124,7 +131,6 @@ class ChapterScreen extends StatelessWidget {
                             )
                           ],
                         ),
-                        
                       ],
                     ),
                   ),
@@ -134,7 +140,13 @@ class ChapterScreen extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-              GestureDetector(
+            GestureDetector(
+              onTap: () => {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                      builder: (context) => ChapterDetailScreen()),
+                )
+              },
               child: Card(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
@@ -185,7 +197,6 @@ class ChapterScreen extends StatelessWidget {
                             SizedBox(height: 8),
                             Row(
                               children: [
-                                
                                 Row(children: [
                                   Image.asset(
                                     'assets/icons/course_works.png',
@@ -208,7 +219,6 @@ class ChapterScreen extends StatelessWidget {
                             )
                           ],
                         ),
-                        
                       ],
                     ),
                   ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learning_curve_academy/grammar/grammar_detail_screen.dart';
 
 class GrammarListScreen extends StatelessWidget {
   @override
@@ -30,21 +31,27 @@ class GrammarListScreen extends StatelessWidget {
               height: 18,
             ),
             Wrap(
-              crossAxisAlignment: WrapCrossAlignment.center,
-              spacing: 16, children: [
-              Text(
-                "2 Topics Available",
-                style: TextStyle(
-                    color: Color.fromARGB(255, 49, 49, 49),
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold),
-              ),
-              
-            ]),
+                crossAxisAlignment: WrapCrossAlignment.center,
+                spacing: 16,
+                children: [
+                  Text(
+                    "2 Topics Available",
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 49, 49, 49),
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ]),
             SizedBox(
               height: 18,
             ),
             GestureDetector(
+              onTap: () => {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                      builder: (context) => GrammarDetailScreen()),
+                )
+              },
               child: Card(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
@@ -95,7 +102,6 @@ class GrammarListScreen extends StatelessWidget {
                             SizedBox(height: 8),
                             Row(
                               children: [
-                                
                                 Row(children: [
                                   Image.asset(
                                     'assets/icons/course_works.png',
@@ -118,7 +124,6 @@ class GrammarListScreen extends StatelessWidget {
                             )
                           ],
                         ),
-                        
                       ],
                     ),
                   ),
@@ -128,7 +133,7 @@ class GrammarListScreen extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-              GestureDetector(
+            GestureDetector(
               child: Card(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
@@ -179,7 +184,6 @@ class GrammarListScreen extends StatelessWidget {
                             SizedBox(height: 8),
                             Row(
                               children: [
-                                
                                 Row(children: [
                                   Image.asset(
                                     'assets/icons/course_works.png',
@@ -202,7 +206,6 @@ class GrammarListScreen extends StatelessWidget {
                             )
                           ],
                         ),
-                        
                       ],
                     ),
                   ),

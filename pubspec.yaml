@@ -26,5 +26,8 @@ flutter:
     - assets/icons/sample.png
     - assets/icons/units.png
     - assets/icons/course_works.png
+    - assets/icons/arrow.png
+    - assets/icons/checkmark.png
+    - assets/icons/dualarrow.png
 
 

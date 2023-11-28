@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:learning_curve_academy/samples/sample_detail.dart';
+import 'package:learning_curve_academy/samples/samples_screen.dart';
 
 class EssayListScreen extends StatelessWidget {
   @override
@@ -30,21 +32,26 @@ class EssayListScreen extends StatelessWidget {
               height: 18,
             ),
             Wrap(
-              crossAxisAlignment: WrapCrossAlignment.center,
-              spacing: 16, children: [
-              Text(
-                "2 Essays Available",
-                style: TextStyle(
-                    color: Color.fromARGB(255, 49, 49, 49),
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold),
-              ),
-              
-            ]),
+                crossAxisAlignment: WrapCrossAlignment.center,
+                spacing: 16,
+                children: [
+                  Text(
+                    "2 Essays Available",
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 49, 49, 49),
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ]),
             SizedBox(
               height: 18,
             ),
             GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => SampleDetailScreen()),
+                );
+              },
               child: Card(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
@@ -92,10 +99,8 @@ class EssayListScreen extends StatelessWidget {
                               ),
                               overflow: TextOverflow.visible,
                             ),
-                            
                           ],
                         ),
-                        
                       ],
                     ),
                   ),
@@ -105,7 +110,7 @@ class EssayListScreen extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-              GestureDetector(
+            GestureDetector(
               child: Card(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
@@ -153,12 +158,8 @@ class EssayListScreen extends StatelessWidget {
                               ),
                               overflow: TextOverflow.visible,
                             ),
-                            
-                              
-                         
                           ],
                         ),
-                        
                       ],
                     ),
                   ),
