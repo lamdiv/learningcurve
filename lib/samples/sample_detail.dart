@@ -1,6 +1,18 @@
 import 'package:flutter/material.dart';
 
-class SampleDetailScreen extends StatelessWidget {
+class SampleDetailScreen extends StatefulWidget {
+  final String title;
+  final Map<String, dynamic> content;
+
+  const SampleDetailScreen(
+      {Key? key, required this.title, required this.content})
+      : super(key: key);
+
+  @override
+  State<SampleDetailScreen> createState() => _SampleDetailScreenState();
+}
+
+class _SampleDetailScreenState extends State<SampleDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +29,7 @@ class SampleDetailScreen extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        title: const Text('Essays'),
+        title: Text(widget.title),
       ),
       body: SafeArea(
           child: SingleChildScrollView(
@@ -30,20 +42,25 @@ class SampleDetailScreen extends StatelessWidget {
               height: 18,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 24),
+              padding: const EdgeInsets.only(left: 14),
               child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "The Jungle Book",
-                      style: TextStyle(
-                          color: Color(0xFFFC7A43),
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold),
+                    Expanded(
+                      child: Text(
+                        widget.content['topic'],
+                        style: TextStyle(
+                            color: Color.fromRGBO(252, 122, 67, 1),
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                     Text(
-                      "(500 words)",
+                      "(" +
+                          (widget.content['description'].split(" ").length)
+                              .toString() +
+                          " words)",
                       style: TextStyle(
                           color: Colors.grey[500],
                           fontSize: 14,
@@ -57,13 +74,13 @@ class SampleDetailScreen extends StatelessWidget {
             Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Image.asset(
                 'assets/icons/arrow.png',
-                width: 16, // Adjust the image size as needed
+                width: 10, // Adjust the image size as needed
                 height: 16, // Adjust the image size as needed
                 fit: BoxFit.cover, // Use 'cover' for aspect ratio
               ),
-              SizedBox(width: 12),
+              SizedBox(width: 6),
               Expanded(
-                child: Text('Ernest Hemingway killed the Mockingbird killed.',
+                child: Text(widget.content['description'],
                     style: TextStyle(
                       height: 1.3,
                       color: Color.fromARGB(255, 119, 119, 119),

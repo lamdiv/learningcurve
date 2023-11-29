@@ -1,32 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:learning_curve_academy/past_questions/question_screen.dart';
+import 'package:learning_curve_academy/samples/essay_list_screen.dart';
 
-class QuestionTapCard extends StatefulWidget {
-  final int index;
+class SampleCard extends StatefulWidget {
   final String title;
-  final List<String> images;
+  final int index;
+  final List<Map<String, dynamic>> content;
 
-  const QuestionTapCard(
-      {Key? super.key,
-      required this.title,
-      required this.images,
-      required this.index});
+  const SampleCard({
+    Key? super.key,
+    required this.title,
+    required this.index,
+    required this.content,
+  });
 
   @override
-  State<QuestionTapCard> createState() => _QuestionTapCardState();
+  State<SampleCard> createState() => _SampleCardState();
 }
 
-class _QuestionTapCardState extends State<QuestionTapCard> {
+class _SampleCardState extends State<SampleCard> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => {
         Navigator.of(context).push(
           MaterialPageRoute(
-              builder: (context) => PastQuestionDetailScreen(
-                    title: widget.title,
-                    images: widget.images,
-                  )),
+              builder: (context) => EssayListScreen(
+                  title: widget.title, content: widget.content)),
         )
       },
       child: Card(
@@ -53,7 +52,7 @@ class _QuestionTapCardState extends State<QuestionTapCard> {
                   ),
                   child: Center(
                     child: Text(
-                      widget.index.toString(),
+                      (widget.index).toString(),
                       style: TextStyle(
                         color: Color(0xFFFC7A43),
                         fontSize: 20,
@@ -71,12 +70,36 @@ class _QuestionTapCardState extends State<QuestionTapCard> {
                       widget.title,
                       style: TextStyle(
                         color: Color(0xFF4A4A4A),
-                        fontSize: 18,
+                        fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
                       overflow: TextOverflow.visible,
                     ),
                     SizedBox(height: 8),
+                    Row(
+                      children: [
+                        Row(children: [
+                          Image.asset(
+                            'assets/icons/units.png',
+                            width: 16, // Adjust the image size as needed
+                            height: 16, // Adjust the image size as needed
+                            fit: BoxFit.cover, // Use 'cover' for aspect ratio
+                          ),
+                          SizedBox(width: 8),
+                          Text(
+                              widget.content.length.toString() +
+                                  " " +
+                                  widget.title +
+                                  (widget.content.length > 1 ? 's' : '') +
+                                  ' Available',
+                              style: TextStyle(
+                                color: Color(0xFFFC7A43),
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600,
+                              )),
+                        ]),
+                      ],
+                    )
                   ],
                 ),
               ],
