@@ -3,20 +3,40 @@ import 'package:learning_curve_academy/lessons/match_the_following.dart';
 import 'package:learning_curve_academy/lessons/questions_answers.dart';
 import 'package:learning_curve_academy/lessons/true_or_false.dart';
 
-const TOPICS = [
-  'Questions & Answers',
-  'Match the following',
-  'True or False',
-];
+String topicsToString(topic) {
+  switch (topic) {
+    case 'QnA':
+      return 'Questions & Answers';
+    case 'MTF':
+      return 'Match the following';
+    default:
+      return '';
+  }
+}
 
 class ChapterDetailScreen extends StatefulWidget {
-  const ChapterDetailScreen({super.key});
+  final Map<String, dynamic> unit;
+
+  const ChapterDetailScreen({Key? super.key, required this.unit});
   @override
   State<ChapterDetailScreen> createState() => _ChapterDetailScreenState();
 }
 
 class _ChapterDetailScreenState extends State<ChapterDetailScreen> {
-  int? selectedTopic = 0;
+  String? selectedTopic = 'QnA';
+
+  List<String> TOPICS = [];
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.unit['QnA']?.length > 0) {
+      TOPICS.add('QnA');
+    }
+    if (widget.unit['MTF']?.length > 0) {
+      TOPICS.add('MTF');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +54,7 @@ class _ChapterDetailScreenState extends State<ChapterDetailScreen> {
             Navigator.pop(context);
           },
         ),
-        title: const Text('Timeline'),
+        title: Text(widget.unit['title'] ?? ''),
       ),
       body: SafeArea(
           child: SingleChildScrollView(
@@ -66,25 +86,25 @@ class _ChapterDetailScreenState extends State<ChapterDetailScreen> {
                         .asMap()
                         .entries
                         .map((entry) {
-                          int index = entry.key;
                           String topic = entry.value;
                           return [
                             GestureDetector(
                               onTap: () => setState(() {
-                                selectedTopic = index;
+                                selectedTopic = topic;
                               }),
                               child: Chip(
-                                label: Text(topic),
-                                backgroundColor: selectedTopic == index
+                                shape: StadiumBorder(),
+                                label: Text(topicsToString(topic)),
+                                backgroundColor: selectedTopic == topic
                                     ? Color(0xFFFC7A43)
                                     : Colors.white,
                                 labelStyle: TextStyle(
-                                  color: selectedTopic == index
+                                  color: selectedTopic == topic
                                       ? Colors.white
                                       : Color(0xFF4A4A4A),
                                 ),
                                 side: BorderSide(
-                                  color: selectedTopic == index
+                                  color: selectedTopic == topic
                                       ? Color(0xFFFC7A43)
                                       : Color(0xFF4A4A4A),
                                   width: 1,
@@ -97,27 +117,6 @@ class _ChapterDetailScreenState extends State<ChapterDetailScreen> {
                         })
                         .expand((x) => x)
                         .toList(),
-                    // Chip(
-                    //   label: Text('Questions & Answers'),
-                    //   backgroundColor: Color(0xFFFC7A43),
-                    //   labelStyle: TextStyle(
-                    //     color: Colors.white,
-                    //   ),
-                    // ),
-                    // SizedBox(
-                    //   width: 8,
-                    // ),
-                    // Chip(
-                    //   label: Text('Match the following'),
-                    //   backgroundColor: Colors.white,
-                    //   labelStyle: TextStyle(
-                    //     color: Color(0xFF4A4A4A),
-                    //   ),
-                    //   side: BorderSide(
-                    //     color: Color(0xFF4A4A4A),
-                    //     width: 1,
-                    //   ),
-                    // ),
 
                     // Add more chips here
                   ),
@@ -128,11 +127,13 @@ class _ChapterDetailScreenState extends State<ChapterDetailScreen> {
               color: Colors.grey,
               height: 30,
             ),
-            if (selectedTopic == 0)
-              QnA()
-            else if (selectedTopic == 1)
-              MTF()
-            else if (selectedTopic == 2)
+            if (selectedTopic == 'QnA')
+              QnA(
+                questions: widget.unit['QnA'] ?? [],
+              )
+            else if (selectedTopic == 'MTF')
+              MTF(questions: widget.unit['MTF'] ?? [])
+            else if (selectedTopic == 'TOF')
               TOF()
           ],
         ),
