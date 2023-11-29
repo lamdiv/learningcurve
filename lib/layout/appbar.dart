@@ -1,9 +1,58 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class Appbar extends StatelessWidget {
-  const Appbar({
-    super.key,
-  });
+class Appbar extends StatefulWidget {
+  const Appbar({Key? key}) : super(key: key);
+
+  @override
+  _AppbarState createState() => _AppbarState();
+}
+
+class _AppbarState extends State<Appbar> {
+  String name = 'Diwash Lamichhane';
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _loadName();
+    });
+  }
+
+  _loadName() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    name = (prefs.getString('name') ?? 'Diwash Lamichhane');
+    if (name.isEmpty) {
+      _askForName();
+    }
+  }
+
+  _askForName() async {
+    await showDialog<String>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Enter your name'),
+          content: TextField(
+            onChanged: (value) {
+              name = value;
+            },
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('OK'),
+              onPressed: () async {
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                await prefs.setString('name', name);
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +93,7 @@ class Appbar extends StatelessWidget {
                   style: TextStyle(color: Color(0xFFA5A5A5), fontSize: 12),
                 ),
                 Text(
-                  'Diwash Lamichhane',
+                  name,
                   style: TextStyle(
                       color: Color(0xFF4A4A4A),
                       fontSize: 16,
@@ -69,18 +118,18 @@ class Appbar extends StatelessWidget {
               ),
             ),
             padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                EdgeInsets.symmetric(vertical: 4, horizontal: 14)),
+                EdgeInsets.symmetric(vertical: 4, horizontal: 12)),
           ),
 
           onPressed: () {},
           icon: Icon(
             // <-- Icon
             Icons.video_camera_front_rounded,
-            size: 16.0,
+            size: 20.0,
             color: Colors.white,
           ),
           label: Text(
-            'Follow Us',
+            'Youtube',
             style: TextStyle(color: Colors.white, fontSize: 14),
           ), // <-- Text
         ),
