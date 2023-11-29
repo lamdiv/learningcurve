@@ -29,5 +29,10 @@ flutter:
     - assets/icons/arrow.png
     - assets/icons/checkmark.png
     - assets/icons/dualarrow.png
+    - assets/set1/
+    - assets/set2/
+    - assets/set3/
+    - assets/set4/
+    - assets/set5/
 
 

@@ -1,5 +1,53 @@
 import 'package:flutter/material.dart';
-import 'package:learning_curve_academy/past_questions/question_screen.dart';
+import 'package:learning_curve_academy/past_questions/QuestionTapCard.dart';
+
+const List<Map<String, dynamic>> QUESTION = [
+  {
+    "title": "Set 1",
+    "images": [
+      'assets/set1/eng1.png',
+      'assets/set1/eng2.png',
+      'assets/set1/eng3.png',
+      'assets/set1/eng4.png',
+      'assets/set1/eng5.png',
+      'assets/set1/eng6.png',
+    ]
+  },
+  {
+    "title": "Set 2",
+    "images": [
+      'assets/set2/samp2_first.png',
+      'assets/set2/samp2_sec.png',
+      'assets/set2/samp2_third.png',
+      'assets/set2/samp2_fourth.png',
+    ]
+  },
+  {
+    "title": "Set 3",
+    "images": [
+      'assets/set3/samp3_first.png',
+      'assets/set3/samp3_sec.png',
+      'assets/set3/samp3_third.png',
+      'assets/set3/samp3_fourth.png',
+    ]
+  },
+  {
+    "title": "Set 4",
+    "images": [
+      'assets/set4/1.jpg',
+      'assets/set4/2.jpg',
+      'assets/set4/3.jpg',
+    ]
+  },
+  {
+    "title": "Set 5",
+    "images": [
+      'assets/set5/1.jpg',
+      'assets/set5/2.jpg',
+      'assets/set5/3.jpg',
+    ]
+  },
+];
 
 class PastQuestionListScreen extends StatelessWidget {
   @override
@@ -18,7 +66,7 @@ class PastQuestionListScreen extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        title: const Text('2023 Mid Term'),
+        title: const Text('Past Questions'),
       ),
       body: SafeArea(
           child: SingleChildScrollView(
@@ -35,7 +83,10 @@ class PastQuestionListScreen extends StatelessWidget {
                 spacing: 16,
                 children: [
                   Text(
-                    "2 Sets Available",
+                    QUESTION.length.toString() +
+                        " Set" +
+                        (QUESTION.length > 1 ? 's' : '') +
+                        " Available",
                     style: TextStyle(
                         color: Color.fromARGB(255, 49, 49, 49),
                         fontSize: 18,
@@ -45,69 +96,19 @@ class PastQuestionListScreen extends StatelessWidget {
             SizedBox(
               height: 18,
             ),
-            GestureDetector(
-              onTap: () => {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                      builder: (context) => PastQuestionDetailScreen()),
-                )
-              },
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                shadowColor: Color(0xFFD6D6D6).withOpacity(0.3),
-                elevation: 3,
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Container(
-                    width: double.infinity,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: 60, // Adjust the size as needed
-                          height: 60,
-                          // Adjust the size as needed
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Color(0xFFFC7A43).withOpacity(0.15),
-                            // Background color of the circle
-                          ),
-                          child: Center(
-                            child: Text(
-                              '01',
-                              style: TextStyle(
-                                color: Color(0xFFFC7A43),
-                                fontSize: 20,
-                                fontWeight: FontWeight.w800,
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 20),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              '2023 Mid Term',
-                              style: TextStyle(
-                                color: Color(0xFF4A4A4A),
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              overflow: TextOverflow.visible,
-                            ),
-                            SizedBox(height: 8),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            ...QUESTION
+                .asMap()
+                .map((index, e) {
+                  return MapEntry(
+                      index,
+                      QuestionTapCard(
+                        index: index + 1,
+                        title: e['title'],
+                        images: e['images'],
+                      ));
+                })
+                .values
+                .toList(),
           ],
         ),
       ))),
