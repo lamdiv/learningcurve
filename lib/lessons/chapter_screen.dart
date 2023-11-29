@@ -87,7 +87,7 @@ class _ChapterScreenState extends State<ChapterScreen> {
                       index,
                       UnitCard(
                         index: index + 1,
-                        unit: e ?? {},
+                        unit: e,
                       ));
                 })
                 .values

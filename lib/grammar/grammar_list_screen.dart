@@ -1,5 +1,81 @@
 import 'package:flutter/material.dart';
-import 'package:learning_curve_academy/grammar/grammar_detail_screen.dart';
+import 'package:learning_curve_academy/grammar/grammar_card.dart';
+
+List grammarList = [
+  {
+    "id": 1,
+    "title": "Tense",
+    "course_works": 3,
+    "formulae": [
+      {"id": 1, "title": "Past Tense", "formula": "formula"},
+    ],
+    "FIB": [
+      {"id": 1, "question_text": "Did you ... food?", "answer_fill": "eat"}
+    ],
+    "Conversion": [
+      {
+        "id": 1,
+        "given_text": "work/he/in a department store.",
+        "convert_to": "Simple Present",
+        "converted_answer": "He works in a department store."
+      },
+      {
+        "id": 2,
+        "given_text": "Suman/at the weekend/do his laundry.",
+        "convert_to": "Simple Present",
+        "converted_answer": "Suman does his laundry at the weekend."
+      },
+      {
+        "id": 3,
+        "given_text": "my friends and I/once a month/go to the cinema.",
+        "convert_to": "Simple Present",
+        "converted_answer": "My friends and I go to the cinema once a month."
+      },
+      {
+        "id": 4,
+        "given_text": "give/nice gift/a/me/my neighbour/never.",
+        "convert_to": "Simple Present",
+        "converted_answer": "My neighbour never gives me a nice gift."
+      },
+      {
+        "id": 5,
+        "given_text": "playing/always/love/the guitar/Akash.",
+        "convert_to": "Simple Present",
+        "converted_answer": "Akash always loves playing the guitar."
+      },
+      {
+        "id": 6,
+        "given_text": "a doctor/mother/be/my.",
+        "convert_to": "Simple Present",
+        "converted_answer": "My mother is a doctor."
+      },
+      {
+        "id": 7,
+        "given_text": "drive/she/always/too fast/her scooter.",
+        "convert_to": "Simple Present",
+        "converted_answer": "She always drives her scooter too fast."
+      },
+      {
+        "id": 8,
+        "given_text": "the day/a lot of/work/people/during.",
+        "convert_to": "Simple Present",
+        "converted_answer": "During the day, a lot of people work."
+      },
+      {
+        "id": 9,
+        "given_text": "where/your brother/work?",
+        "convert_to": "Simple Present",
+        "converted_answer": "Where does your brother work?"
+      },
+      {
+        "id": 10,
+        "given_text": "what time/your sister/every day/get up?",
+        "convert_to": "Simple Present",
+        "converted_answer": "What time does your sister get up every day?"
+      }
+    ]
+  }
+];
 
 class GrammarListScreen extends StatelessWidget {
   @override
@@ -35,7 +111,10 @@ class GrammarListScreen extends StatelessWidget {
                 spacing: 16,
                 children: [
                   Text(
-                    "2 Topics Available",
+                    grammarList.length.toString() +
+                        " Topic" +
+                        (grammarList.length > 1 ? 's' : '') +
+                        " Available",
                     style: TextStyle(
                         color: Color.fromARGB(255, 49, 49, 49),
                         fontSize: 18,
@@ -45,176 +124,16 @@ class GrammarListScreen extends StatelessWidget {
             SizedBox(
               height: 18,
             ),
-            GestureDetector(
-              onTap: () => {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                      builder: (context) => GrammarDetailScreen()),
-                )
-              },
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                shadowColor: Color(0xFFD6D6D6).withOpacity(0.3),
-                elevation: 3,
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Container(
-                    width: double.infinity,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: 60, // Adjust the size as needed
-                          height: 60,
-                          // Adjust the size as needed
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Color(0xFFFC7A43).withOpacity(0.15),
-                            // Background color of the circle
-                          ),
-                          child: Center(
-                            child: Text(
-                              '01',
-                              style: TextStyle(
-                                color: Color(0xFFFC7A43),
-                                fontSize: 20,
-                                fontWeight: FontWeight.w800,
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 20),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Tenses',
-                              style: TextStyle(
-                                color: Color(0xFF4A4A4A),
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              overflow: TextOverflow.visible,
-                            ),
-                            SizedBox(height: 8),
-                            Row(
-                              children: [
-                                Row(children: [
-                                  Image.asset(
-                                    'assets/icons/course_works.png',
-                                    width:
-                                        16, // Adjust the image size as needed
-                                    height:
-                                        16, // Adjust the image size as needed
-                                    fit: BoxFit
-                                        .cover, // Use 'cover' for aspect ratio
-                                  ),
-                                  SizedBox(width: 8),
-                                  Text(25.toString() + ' Course Works',
-                                      style: TextStyle(
-                                        color: Color(0xFFFC7A43),
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w600,
-                                      )),
-                                ]),
-                              ],
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            GestureDetector(
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                shadowColor: Color(0xFFD6D6D6).withOpacity(0.3),
-                elevation: 3,
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Container(
-                    width: double.infinity,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: 60, // Adjust the size as needed
-                          height: 60,
-                          // Adjust the size as needed
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Color(0xFFFC7A43).withOpacity(0.15),
-                            // Background color of the circle
-                          ),
-                          child: Center(
-                            child: Text(
-                              '02',
-                              style: TextStyle(
-                                color: Color(0xFFFC7A43),
-                                fontSize: 20,
-                                fontWeight: FontWeight.w800,
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 20),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Prepositions',
-                              style: TextStyle(
-                                color: Color(0xFF4A4A4A),
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              overflow: TextOverflow.visible,
-                            ),
-                            SizedBox(height: 8),
-                            Row(
-                              children: [
-                                Row(children: [
-                                  Image.asset(
-                                    'assets/icons/course_works.png',
-                                    width:
-                                        16, // Adjust the image size as needed
-                                    height:
-                                        16, // Adjust the image size as needed
-                                    fit: BoxFit
-                                        .cover, // Use 'cover' for aspect ratio
-                                  ),
-                                  SizedBox(width: 8),
-                                  Text(25.toString() + ' Course Works',
-                                      style: TextStyle(
-                                        color: Color(0xFFFC7A43),
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w600,
-                                      )),
-                                ]),
-                              ],
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
+            ...grammarList
+                .asMap()
+                .map((index, e) {
+                  return MapEntry(
+                      index,
+                      GrammarCard(
+                          index: index + 1, title: e['title'], topics: e));
+                })
+                .values
+                .toList()
           ],
         ),
       ))),

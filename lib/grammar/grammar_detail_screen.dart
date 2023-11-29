@@ -3,16 +3,54 @@ import 'package:learning_curve_academy/grammar/conversion.dart';
 import 'package:learning_curve_academy/grammar/fill_blanks.dart';
 import 'package:learning_curve_academy/grammar/formulae.dart';
 
-const TOPICS = ['Formulae', 'Fill in the blanks', 'Conversion'];
+String topicsToString(topic) {
+  switch (topic) {
+    case 'formulae':
+      return 'Structures';
+    case 'FIB':
+      return 'Fill in the blanks';
+    case 'Conversion':
+      return 'Conversion';
+    default:
+      return '';
+  }
+}
+
+// const TOPICS = ['Formulae', 'Fill in the blanks', 'Conversion'];
 
 class GrammarDetailScreen extends StatefulWidget {
-  const GrammarDetailScreen({super.key});
+  final Map<String, dynamic> topics;
+  final String title;
+
+  const GrammarDetailScreen(
+      {Key? super.key, required this.topics, required this.title});
   @override
   State<GrammarDetailScreen> createState() => _GrammarDetailScreenState();
 }
 
 class _GrammarDetailScreenState extends State<GrammarDetailScreen> {
-  int? selectedTopic = 0;
+  String? selectedTopic = 'formulae';
+
+  List<String> TOPICS = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    if (widget.topics.containsKey('formulae') &&
+        widget.topics['formulae'].length > 0) {
+      TOPICS.add('formulae');
+    }
+
+    if (widget.topics.containsKey('FIB') && widget.topics['FIB'].length > 0) {
+      TOPICS.add('FIB');
+    }
+
+    if (widget.topics.containsKey('Conversion') &&
+        widget.topics['Conversion'].length > 0) {
+      TOPICS.add('Conversion');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +68,7 @@ class _GrammarDetailScreenState extends State<GrammarDetailScreen> {
             Navigator.pop(context);
           },
         ),
-        title: const Text('Tenses'),
+        title: Text(widget.title),
       ),
       body: SafeArea(
           child: SingleChildScrollView(
@@ -62,25 +100,25 @@ class _GrammarDetailScreenState extends State<GrammarDetailScreen> {
                         .asMap()
                         .entries
                         .map((entry) {
-                          int index = entry.key;
                           String topic = entry.value;
                           return [
                             GestureDetector(
                               onTap: () => setState(() {
-                                selectedTopic = index;
+                                selectedTopic = topic;
                               }),
                               child: Chip(
-                                label: Text(topic),
-                                backgroundColor: selectedTopic == index
+                                shape: StadiumBorder(),
+                                label: Text(topicsToString(topic)),
+                                backgroundColor: selectedTopic == topic
                                     ? Color(0xFFFC7A43)
                                     : Colors.white,
                                 labelStyle: TextStyle(
-                                  color: selectedTopic == index
+                                  color: selectedTopic == topic
                                       ? Colors.white
                                       : Color(0xFF4A4A4A),
                                 ),
                                 side: BorderSide(
-                                  color: selectedTopic == index
+                                  color: selectedTopic == topic
                                       ? Color(0xFFFC7A43)
                                       : Color(0xFF4A4A4A),
                                   width: 1,
@@ -103,12 +141,14 @@ class _GrammarDetailScreenState extends State<GrammarDetailScreen> {
               color: Colors.grey,
               height: 30,
             ),
-            if (selectedTopic == 0)
-              Formulae()
-            else if (selectedTopic == 1)
-              FTB()
-            else if (selectedTopic == 2)
-              Conversion()
+            if (selectedTopic == 'formulae')
+              Formulae(
+                questions: widget.topics['formulae'] ?? [],
+              )
+            else if (selectedTopic == 'FIB')
+              FTB(questions: widget.topics['FIB'] ?? [])
+            else if (selectedTopic == 'Conversion')
+              Conversion(questions: widget.topics['Conversion'] ?? [])
           ],
         ),
       ))),

@@ -30,10 +30,10 @@ class _ChapterDetailScreenState extends State<ChapterDetailScreen> {
   @override
   void initState() {
     super.initState();
-    if (widget.unit['QnA']?.length > 0) {
+    if (widget.unit.containsKey('QnA') && widget.unit['QnA'].length > 0) {
       TOPICS.add('QnA');
     }
-    if (widget.unit['MTF']?.length > 0) {
+    if (widget.unit.containsKey('MTF') && widget.unit['MTF'].length > 0) {
       TOPICS.add('MTF');
     }
   }
