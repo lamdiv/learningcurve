@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Appbar extends StatefulWidget {
   const Appbar({Key? key}) : super(key: key);
@@ -11,12 +12,22 @@ class Appbar extends StatefulWidget {
 class _AppbarState extends State<Appbar> {
   String name = '';
   String greetings = "Good Morning";
+  Future<void>? _launched;
 
   @override
   void initState() {
     super.initState();
     __gretingText();
     _loadName();
+  }
+
+  Future<void> _launchInBrowser(Uri url) async {
+    if (!await launchUrl(
+      url,
+      mode: LaunchMode.externalApplication,
+    )) {
+      throw Exception('Could not launch $url');
+    }
   }
 
   __gretingText() {
@@ -155,22 +166,18 @@ class _AppbarState extends State<Appbar> {
           crossAxisAlignment: WrapCrossAlignment.center,
           children: [
             Container(
-              width: 40.0,
-              height: 40.0,
+              width: 50.0,
+              height: 50.0,
               decoration: BoxDecoration(
                 shape: BoxShape.circle, // Create a circular shape
-                border: Border.all(
-                  color: Color(0xFFFFB48A), // Border color (amber)
-                  width: 2.0, // Border width
-                ),
               ),
               child: ClipOval(
-                child: Image.network(
-                  'https://cdn.pixabay.com/photo/2023/10/07/07/10/butterfly-8299620_640.jpg',
-                  width: 40.0,
-                  height: 40.0,
+                child: Image.asset(
+                  'assets/logo.png',
+                  width: 60.0,
+                  height: 60.0,
                   fit: BoxFit
-                      .cover, // You can adjust the BoxFit property as needed
+                      .fitHeight, // You can adjust the BoxFit property as needed
                 ),
               ),
             ),
@@ -193,36 +200,46 @@ class _AppbarState extends State<Appbar> {
             )
           ],
         ),
-        TextButton.icon(
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-              (Set<MaterialState> states) {
-                return Color(0xFFFC7A43); // Background color when pressed
-                // Default background color
-              },
-            ),
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                borderRadius:
-                    BorderRadius.circular(50.0), // Adjust the radius as needed
-              ),
-            ),
-            padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                EdgeInsets.symmetric(vertical: 4, horizontal: 12)),
+        GestureDetector(
+          onTap: () => setState(() {
+            _launched = _launchInBrowser(
+                Uri.parse('https://www.youtube.com/@LearningCurve_Academy'));
+          }),
+          child: Image.asset(
+            'assets/youtube.png',
+            width: 100,
           ),
+        )
+        // TextButton.icon(
+        //   style: ButtonStyle(
+        //     backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+        //       (Set<MaterialState> states) {
+        //         return Color(0xFFFC7A43); // Background color when pressed
+        //         // Default background color
+        //       },
+        //     ),
+        //     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        //       RoundedRectangleBorder(
+        //         borderRadius:
+        //             BorderRadius.circular(50.0), // Adjust the radius as needed
+        //       ),
+        //     ),
+        //     padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+        //         EdgeInsets.symmetric(vertical: 4, horizontal: 12)),
+        //   ),
 
-          onPressed: () {},
-          icon: Icon(
-            // <-- Icon
-            Icons.video_camera_front_rounded,
-            size: 20.0,
-            color: Colors.white,
-          ),
-          label: Text(
-            'Youtube',
-            style: TextStyle(color: Colors.white, fontSize: 14),
-          ), // <-- Text
-        ),
+        //   onPressed: () {},
+        //   icon: Icon(
+        //     // <-- Icon
+        //     Icons.video_camera_front_rounded,
+        //     size: 20.0,
+        //     color: Colors.white,
+        //   ),
+        //   label: Text(
+        //     'Youtube',
+        //     style: TextStyle(color: Colors.white, fontSize: 14),
+        //   ), // <-- Text
+        // ),
       ],
     );
   }
