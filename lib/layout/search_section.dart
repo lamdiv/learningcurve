@@ -15,7 +15,7 @@ class Search extends StatelessWidget {
           "Let's find what we have got",
           style: TextStyle(
               color: Color(0xFF4A4A4A),
-              fontSize: 14,
+              fontSize: 16,
               fontWeight: FontWeight.bold),
         ),
         SizedBox(

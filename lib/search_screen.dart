@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:learning_curve_academy/lessons/chapter_card.dart';
 import 'package:learning_curve_academy/lessons/chapter_detail_screen.dart';
-import 'package:learning_curve_academy/lessons/lession_screen.dart';
+import 'package:learning_curve_academy/dataset/LESSONS.dart';
 
 class SearchScreen extends StatefulWidget {
   @override
@@ -74,11 +73,11 @@ class _SearchScreenState extends State<SearchScreen> {
                 SizedBox(
                   height: 18,
                 ),
-                units.length > 1
+                units.length > 0
                     ? Text(
                         units.length.toString() +
                             " Lesson" +
-                            (units.length > 1 ? 's' : '') +
+                            (units.length > 0 ? 's' : '') +
                             " Available",
                         style: TextStyle(
                             color: Color.fromARGB(255, 49, 49, 49),

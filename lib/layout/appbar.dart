@@ -12,7 +12,6 @@ class Appbar extends StatefulWidget {
 class _AppbarState extends State<Appbar> {
   String name = '';
   String greetings = "Good Morning";
-  Future<void>? _launched;
 
   @override
   void initState() {
@@ -202,7 +201,7 @@ class _AppbarState extends State<Appbar> {
         ),
         GestureDetector(
           onTap: () => setState(() {
-            _launched = _launchInBrowser(
+            _launchInBrowser(
                 Uri.parse('https://www.youtube.com/@LearningCurve_Academy'));
           }),
           child: Image.asset(

@@ -4,7 +4,7 @@ import 'layout/appbar.dart';
 import 'layout/cover.dart';
 import 'layout/section.dart';
 import 'layout/search_section.dart';
-import 'grammar/grammar_list_screen.dart';
+import 'package:learning_curve_academy/dataset/GRAMMAR.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -52,8 +52,8 @@ class HomeScreen extends StatelessWidget {
                                 .length, // Number of cards you want to display
                             itemBuilder: (BuildContext context, int index) {
                               return HomeGrammarCard(
-                                title: grammarList[0]['title'] ?? '',
-                                topics: grammarList[0],
+                                title: grammarList[index]['title'] ?? '',
+                                topics: grammarList[index],
                               );
                             },
                           ),
@@ -130,14 +130,14 @@ class _HomeGrammarCardState extends State<HomeGrammarCard> {
                       ),
                     ),
                     SizedBox(height: 5),
-                    Text(
-                      'Grammar',
-                      style: TextStyle(
-                        color: Color(0xFFFC7A43),
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
+                    // Text(
+                    //   'Grammar',
+                    //   style: TextStyle(
+                    //     color: Color(0xFFFC7A43),
+                    //     fontSize: 14,
+                    //     fontWeight: FontWeight.w500,
+                    //   ),
+                    // ),
                   ],
                 ),
               ],

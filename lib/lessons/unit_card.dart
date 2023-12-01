@@ -65,43 +65,45 @@ class _UnitCardState extends State<UnitCard> {
                   ),
                 ),
                 SizedBox(width: 20),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      widget.unit['title'] ?? '',
-                      style: TextStyle(
-                        color: Color(0xFF4A4A4A),
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        widget.unit['title'] ?? '',
+                        style: TextStyle(
+                          color: Color(0xFF4A4A4A),
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        overflow: TextOverflow.visible,
                       ),
-                      overflow: TextOverflow.visible,
-                    ),
-                    SizedBox(height: 8),
-                    Row(
-                      children: [
-                        Row(children: [
-                          Image.asset(
-                            'assets/icons/course_works.png',
-                            width: 16, // Adjust the image size as needed
-                            height: 16, // Adjust the image size as needed
-                            fit: BoxFit.cover, // Use 'cover' for aspect ratio
-                          ),
-                          SizedBox(width: 8),
-                          Text(
-                              getCourseWorkCount().toString() +
-                                  ' Course Work' +
-                                  (getCourseWorkCount() > 1 ? 's' : ''),
-                              style: TextStyle(
-                                color: Color(0xFFFC7A43),
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600,
-                              )),
-                        ]),
-                      ],
-                    )
-                  ],
+                      SizedBox(height: 8),
+                      Row(
+                        children: [
+                          Row(children: [
+                            Image.asset(
+                              'assets/icons/course_works.png',
+                              width: 16, // Adjust the image size as needed
+                              height: 16, // Adjust the image size as needed
+                              fit: BoxFit.cover, // Use 'cover' for aspect ratio
+                            ),
+                            SizedBox(width: 8),
+                            Text(
+                                getCourseWorkCount().toString() +
+                                    ' Course Work' +
+                                    (getCourseWorkCount() > 1 ? 's' : ''),
+                                style: TextStyle(
+                                  color: Color(0xFFFC7A43),
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                )),
+                          ]),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ],
             ),
