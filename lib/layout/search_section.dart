@@ -52,7 +52,7 @@ class SearchBar extends StatelessWidget {
           child: IgnorePointer(
             child: TextField(
               decoration: InputDecoration(
-                hintText: "search for courses, videos....",
+                hintText: "search for lessons....",
                 hintStyle: TextStyle(color: Color.fromARGB(255, 176, 176, 176)),
                 border: InputBorder.none, // Remove default input field border
                 prefixIcon: Icon(

@@ -8,7 +8,7 @@ List<Map<String, dynamic>> LESSONS = [
     "units": [
       {
         "id": 1,
-        "title": "A Tour to Central Zoo",
+        "title": "A Hello to Central Zoo",
         "QnA": [
           {
             "id": 1,
