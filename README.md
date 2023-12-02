@@ -1,5 +1,5 @@
 
-# learning_curve_academy
+# Learning Curve Academy
 
 The **English Guide App for Grade 8**, proudly created by **LearningCurve Academy**, is a comprehensive mobile application designed to assist grade 8 students in enhancing their English language skills. This app serves as a valuable resource, providing answers to students' questions, tips for improving their writing, and guidance on various forms of written communication, such as essays, letters, and applications. With this app, students can refine their English language proficiency and learn how to express themselves effectively in writing. Whether you're a student looking for guidance or an educator supporting learners, this app is tailored to help you excel in English.
 
