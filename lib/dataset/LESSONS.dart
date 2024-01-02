@@ -370,7 +370,7 @@ List<Map<String, dynamic>> LESSONS = [
       },
       {
         "id": 1,
-        "title": "How to Wash Clothes in a Washing Machine",
+        "title": "Visit to Dhading",
         "QnA": [
           {
             "id": 1,
@@ -452,45 +452,45 @@ List<Map<String, dynamic>> LESSONS = [
           }
         ],
       },
-      {
-        "id": 1,
-        "title": "How to Wash Clothes in a Washing Machine",
-        "QnA": [
-          {
-            "id": 1,
-            "question_text": "When did the writer visit a village in Dhading?",
-            "answer_text":
-                "The writer visited a village in Dhading on Saturday, 5 March 2012."
-          },
-          {
-            "id": 2,
-            "question_text":
-                "Why did the writer give some money to the boys on the bus?",
-            "answer_text":
-                "The writer gave some money to the boys on the bus because they played Nepali songs and made the writer feel close to the Nepali community."
-          },
-          {
-            "id": 3,
-            "question_text":
-                "Was the journey to the village comfortable for the writer? Why?",
-            "answer_text":
-                "No, because the roads were bumpy and windy. The writer was very tired during his journey."
-          },
-          {
-            "id": 4,
-            "question_text":
-                "Why does the writer feel he needs to write a diary during the day?",
-            "answer_text":
-                "The writer felt he needs to write a diary during the day so that he can remember the amazing adventures he has had."
-          },
-          {
-            "id": 5,
-            "question_text": "What did the writer like the most about Nepal?",
-            "answer_text":
-                "The writer liked meeting the family, the friendliness, and support of Nepali people."
-          }
-        ],
-      },
+      // {
+      //   "id": 1,
+      //   "title": "How to Wash Clothes in a Washing Machine",
+      //   "QnA": [
+      //     {
+      //       "id": 1,
+      //       "question_text": "When did the writer visit a village in Dhading?",
+      //       "answer_text":
+      //           "The writer visited a village in Dhading on Saturday, 5 March 2012."
+      //     },
+      //     {
+      //       "id": 2,
+      //       "question_text":
+      //           "Why did the writer give some money to the boys on the bus?",
+      //       "answer_text":
+      //           "The writer gave some money to the boys on the bus because they played Nepali songs and made the writer feel close to the Nepali community."
+      //     },
+      //     {
+      //       "id": 3,
+      //       "question_text":
+      //           "Was the journey to the village comfortable for the writer? Why?",
+      //       "answer_text":
+      //           "No, because the roads were bumpy and windy. The writer was very tired during his journey."
+      //     },
+      //     {
+      //       "id": 4,
+      //       "question_text":
+      //           "Why does the writer feel he needs to write a diary during the day?",
+      //       "answer_text":
+      //           "The writer felt he needs to write a diary during the day so that he can remember the amazing adventures he has had."
+      //     },
+      //     {
+      //       "id": 5,
+      //       "question_text": "What did the writer like the most about Nepal?",
+      //       "answer_text":
+      //           "The writer liked meeting the family, the friendliness, and support of Nepali people."
+      //     }
+      //   ],
+      // },
     ]
   }
 ];
